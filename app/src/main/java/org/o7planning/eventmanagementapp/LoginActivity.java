@@ -16,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText etLoginPhone, etLoginPass;
     private MaterialButton btnLogin;
-    private TextView tvGoToRegister, tvClearData;
+    private TextView tvGoToRegister;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -42,16 +42,11 @@ public class LoginActivity extends AppCompatActivity {
         etLoginPass = findViewById(R.id.etLoginPass);
         btnLogin = findViewById(R.id.btnLogin);
         tvGoToRegister = findViewById(R.id.tvGoToRegister);
-        tvClearData = findViewById(R.id.tvClearData); // Thêm nút xóa sạch dữ liệu nếu cần
     }
 
     private void setupListeners() {
         btnLogin.setOnClickListener(v -> handleLogin());
         tvGoToRegister.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
-        
-        if (tvClearData != null) {
-            tvClearData.setOnClickListener(v -> clearAllData());
-        }
     }
 
     private void handleLogin() {
@@ -68,22 +63,5 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Số điện thoại hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void clearAllData() {
-        // 1. Xóa SharedPreferences (Thông tin User)
-        sharedPreferences.edit().clear().apply();
-
-        // 2. Xóa Database (Sự kiện và Thông báo)
-        new Thread(() -> {
-            AppDatabase.getInstance(this).clearAllTables();
-            runOnUiThread(() -> {
-                Toast.makeText(this, "Đã dọn sạch toàn bộ dữ liệu dự án!", Toast.LENGTH_LONG).show();
-                // Khởi động lại ứng dụng
-                Intent intent = new Intent(this, LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            });
-        }).start();
     }
 }

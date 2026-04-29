@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">VTi-CalenMana</string>
+    <string name="app_name">Ti Event</string>
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_events">Sự kiện</string>
+    <string name="nav_clock">Đồng hồ</string>
+    <string name="nav_notes">Ghi chú</string>
+    <string name="nav_profile">Cá nhân</string>
+    <string name="nav_notifications">Thông báo</string>
+    <string name="tab_alarm">Báo thức</string>
+    <string name="tab_countdown">Đếm ngược</string>
+    <string name="tab_stopwatch">Bấm giờ</string>
+    <string name="search_hint">Tìm kiếm…</string>
+    <string name="filter_month">Lọc theo tháng</string>
+    <string name="add_new">Thêm mới</string>
+    <string name="start">Bắt đầu</string>
+    <string name="reset">Đặt lại</string>
+    <string name="alarm_list_title">Danh sách báo thức</string>
 </resources>

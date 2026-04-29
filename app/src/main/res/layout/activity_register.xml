@@ -3,24 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDF6F4">
+    android:background="@color/background_light">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="24dp">
 
+        <ImageView
+            android:id="@+id/ivRegLogo"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/logo_ev"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tvRegTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Đăng ký để Mana E-M"
+            android:layout_marginTop="8dp"
+            android:text="Đăng ký Ti Event"
             android:textColor="@color/primary_color"
             android:textSize="28sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/ivRegLogo" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilRegName"
@@ -83,6 +95,7 @@
             android:layout_marginTop="20dp"
             android:text="Đã có tài khoản? Đăng nhập"
             android:textColor="@color/primary_color"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnRegister" />

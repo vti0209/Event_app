@@ -28,18 +28,22 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
-            android:label="Đăng ký tài khoản" />
+            android:label="Đăng ký tài khoản"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".AddEventActivity"
             android:exported="false"
-            android:label="Thêm sự kiện" />
+            android:label="Thêm sự kiện"
+            android:windowSoftInputMode="adjustResize" />
 
         <receiver android:name=".AlarmReceiver" android:exported="false" />
+        <receiver android:name=".ClockAlarmReceiver" android:exported="false" />
     </application>
 
 </manifest>

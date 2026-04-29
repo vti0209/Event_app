@@ -46,7 +46,8 @@ public class EventsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-        setHasOptionsMenu(true);
+        // Bỏ setHasOptionsMenu(true) vì MainActivity đã quản lý Menu chung cho toàn app
+        // setHasOptionsMenu(true);
 
         rvEvents = view.findViewById(R.id.rvEvents);
         tvResultsHeader = view.findViewById(R.id.tvResultsHeader);
@@ -81,7 +82,6 @@ public class EventsFragment extends Fragment {
             layoutEmptyResults.setVisibility(View.VISIBLE);
             rvEvents.setVisibility(View.GONE);
             if (tvEmptyMessage != null) {
-                // Tùy biến thông báo khi không có kết quả
                 if (text.contains("Tìm kiếm")) {
                     tvEmptyMessage.setText(String.format("Không tìm thấy kết quả nào cho \"%s\"", text.substring(text.indexOf("\"") + 1, text.lastIndexOf("\""))));
                 } else if (text.contains("Tháng")) {
@@ -162,41 +162,25 @@ public class EventsFragment extends Fragment {
         updateHeaderText("Tất cả sự kiện");
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.options_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.menu_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-        if (searchView != null) {
-            searchView.setQueryHint("Tìm sự kiện...");
-            
-            EditText searchEditText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
-            if (searchEditText != null) {
-                searchEditText.setTextColor(Color.BLACK);
-                searchEditText.setHintTextColor(Color.GRAY);
-            }
+    // Gỡ bỏ onCreateOptionsMenu và onOptionsItemSelected từ đây 
+    // vì MainActivity sẽ gửi tín hiệu qua listener hoặc interface nếu cần.
+    // Tuy nhiên, để đơn giản và nhanh, MainActivity sẽ tự xử lý hoặc gọi method này.
 
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) { return false; }
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    filterByName(newText);
-                    return true;
-                }
-            });
+    public void handleSearch(String query) {
+        filterByName(query);
+    }
 
-            // Khi tắt tìm kiếm thì reset header
-            searchView.setOnCloseListener(() -> {
-                updateHeaderText("Tất cả sự kiện");
-                return false;
-            });
-        }
+    public void handleAddEvent() {
+        startActivityForResult(new Intent(getContext(), AddEventActivity.class), REQUEST_CODE_ADD);
+    }
+
+    public void handleFilter() {
+        showFilterDialog();
     }
 
     private void filterByName(String text) {
         filteredList.clear();
-        if (text.isEmpty()) {
+        if (text == null || text.isEmpty()) {
             filteredList.addAll(eventList);
             updateHeaderText("Tất cả sự kiện");
         } else {
@@ -206,18 +190,6 @@ public class EventsFragment extends Fragment {
             updateHeaderText(String.format("Kết quả tìm kiếm cho \"%s\"", text));
         }
         adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menu_add) {
-            startActivityForResult(new Intent(getContext(), AddEventActivity.class), REQUEST_CODE_ADD);
-            return true;
-        } else if (item.getItemId() == R.id.menu_filter) {
-            showFilterDialog();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void showFilterDialog() {

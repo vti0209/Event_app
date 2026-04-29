@@ -3,21 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menu_notification"
+        android:icon="@drawable/ic_nav_notifications"
+        android:title="@string/nav_notifications"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/menu_search"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="Tìm kiếm"
+        android:title="@string/search_hint"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/menu_filter"
         android:icon="@android:drawable/ic_menu_today"
-        android:title="Lọc theo tháng"
+        android:title="@string/filter_month"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_add"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="Thêm mới"
+        android:title="@string/add_new"
         app:showAsAction="always" />
 </menu>
