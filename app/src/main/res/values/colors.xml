@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Professional IT / Deeper Blue Theme -->
+    <color name="primary_color">#1A237E</color> <!-- Indigo Blue -->
+    <color name="primary_dark">#121858</color>
+    <color name="primary_light">#534BAE</color>
+    <color name="accent_color">#1A237E</color>
+    <color name="background_light">#F5F6FA</color>
+    <color name="text_main">#1C1E21</color>
+    <color name="text_hint">#8D949E</color>
+
+    <!-- Code/IDE inspired colors -->
+    <color name="it_blue">#2979FF</color>
+    <color name="it_green">#004d00</color>
+    <color name="it_purple">#4B0082</color>
+</resources>

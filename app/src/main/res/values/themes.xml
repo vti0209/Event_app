@@ -1,0 +1,40 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.EventManagementApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/accent_color</item>
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:navigationBarColor">@color/white</item>
+
+        <!-- Custom SearchView Style -->
+        <item name="searchViewStyle">@style/CustomSearchView</item>
+    </style>
+
+    <style name="Theme.EventManagementApp" parent="Base.Theme.EventManagementApp" />
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="BottomNavStyle">
+        <item name="android:background">@color/white</item>
+        <item name="itemIconTint">@color/bottom_nav_selector</item>
+        <item name="itemTextColor">@color/bottom_nav_selector</item>
+        <item name="itemRippleColor">@color/accent_color</item>
+    </style>
+
+    <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
+        <!-- Nền trắng khi click (mở rộng) -->
+        <item name="queryBackground">@android:color/white</item>
+        <item name="submitBackground">@android:color/white</item>
+        <!-- Chữ màu đen khi nhập -->
+        <item name="android:editTextColor">@android:color/black</item>
+        <!-- Chữ gợi ý màu xám -->
+        <item name="android:textColorHint">#888888</item>
+        <!-- Icon màu xám -->
+        <item name="searchIcon">@android:drawable/ic_menu_search</item>
+        <item name="closeIcon">@android:drawable/ic_menu_close_clear_cancel</item>
+    </style>
+</resources>
